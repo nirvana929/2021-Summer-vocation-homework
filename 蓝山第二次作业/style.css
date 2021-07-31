@@ -1,0 +1,262 @@
+    /* 整个页面大盒子 */
+    
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .box {
+        display: flex;
+        width: 1291px;
+        height: 1031px;
+    }
+    /* 左边大盒子 */
+    
+    .bigbox-1 {
+        width: 255px;
+        height: 1031px;
+        background-color: #29343F;
+    }
+    /* logo的盒子 */
+    
+    .function-1 {
+        width: 255px;
+        height: 67px;
+    }
+    
+    .function-1 img {
+        height: 26px;
+        width: 100px;
+        margin: 16px 76.5px;
+    }
+    /* 名称示例盒子 */
+    
+    .function-2 {
+        width: 255px;
+        height: 78px;
+        /* border: 1px 0px solid #232E39; */
+        border-top: 1px solid #D8E4F5;
+    }
+    
+    .function-2 img {
+        margin-top: 17px;
+    }
+    /* 菜单栏两个盒子，一个菜单，一个列表 */
+    
+    .function-3 {
+        width: 255px;
+        height: 336px;
+    }
+    /* 菜单 */
+    
+    .menu {
+        width: 230px;
+        height: 56px;
+        padding-left: 25px;
+        line-height: 56px;
+        color: #7C8591;
+    }
+    /* 列表 */
+    
+    .element-1 div {
+        width: 255px;
+        height: 40px;
+        line-height: 40px;
+    }
+    /* 图片 */
+    
+    .element-1 div img {
+        display: inline-block;
+        margin: 0px 10px 0px 20px;
+    }
+    /* 文字 */
+    
+    .element-1 div p {
+        display: inline-block;
+        color: white;
+    }
+    /* 帮助 */
+    
+    .function-4 {
+        width: 255px;
+        height: 136px;
+    }
+    
+    .help {
+        width: 230px;
+        height: 56px;
+        padding-left: 25px;
+        line-height: 56px;
+        color: #7C8591;
+    }
+    
+    .element-2 div {
+        width: 255px;
+        height: 40px;
+        line-height: 40px;
+    }
+    /* 图片 */
+    
+    .element-2 div img {
+        display: inline-block;
+        margin: 0px 10px 0px 20px;
+    }
+    /* 文字 */
+    
+    .element-2 div p {
+        display: inline-block;
+        color: white;
+    }
+    
+    .function-5 {
+        width: 255px;
+        height: 230px;
+        border-bottom: 1px solid #D8E4F5;
+    }
+    
+    .setting {
+        width: 230px;
+        height: 56px;
+        padding-left: 25px;
+        line-height: 56px;
+        color: #7C8591;
+    }
+    
+    .element-3 div {
+        width: 255px;
+        height: 40px;
+    }
+    
+    .element-3 div img {
+        display: inline-block;
+        margin: 0px 10px 0px 20px;
+    }
+    /* 文字 */
+    
+    .element-3 div p {
+        display: inline-block;
+        color: white;
+    }
+    /* 设置 */
+    /* 右边大盒子一共分为三个部分 */
+    
+    .bigbox-2 {
+        width: 1036px;
+        height: 1031px;
+        border-right: 1px solid #D8E4F5;
+    }
+    /* 第一行搜索框 */
+    /* 右边顶上搜索框 */
+    
+    .search {
+        width: 1036px;
+        height: 67px;
+    }
+    
+    .search input {
+        float: left;
+        width: 808px;
+        height: 31px;
+        margin: 15px 30px;
+        border: 1px solid #D8E4F5;
+        border-radius: 4px;
+    }
+    
+    .search input :active {
+        color: skyblue;
+    }
+    
+    .language {
+        float: left;
+        width: 126px;
+        height: 37px;
+        line-height: 37px;
+        margin-top: 15px;
+        text-indent: 12px;
+    }
+    /* 第二行分为两部分，左边为用户列表，右边为对话框 */
+    
+    .contactbox {
+        width: 1036px;
+        height: 964px;
+    }
+    /* 左边的用户列表 */
+    
+    .userbox {
+        float: left;
+        width: 340px;
+        height: 964px;
+    }
+    /* 用户列表第一行 */
+    
+    .userslink {
+        width: 339px;
+        height: 43px;
+        /* padding-left: 30px; */
+        text-indent: 30px;
+        font-size: 14px;
+        line-height: 44px;
+        border-top: 1px solid #D8E4F5;
+        border-right: 1px solid #D8E4F5;
+    }
+    
+    .news {
+        float: right;
+        width: 100px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        font-size: 10px;
+        margin: 10px 29px 10px 0px;
+        color: #5B67DB;
+        background-color: #EBEDFB;
+    }
+    /* 用户列表里的8个用户 */
+    /* 340 115*8+44  */
+    
+    .user {
+        width: 339px;
+        height: 114px;
+        border-top: 1px solid #D8E4F5;
+        border-right: 1px solid #D8E4F5;
+    }
+    /* 右边的对话框 */
+    
+    .chatbox {
+        float: left;
+        width: 696px;
+        height: 964px;
+    }
+    /* 第一栏用户成员 */
+    
+    .person {
+        height: 43px;
+        line-height: 43px;
+        text-indent: 44px;
+        border-top: 1px solid #D8E4F5;
+    }
+    
+    .person img {
+        float: right;
+        margin: 11px 30px;
+    }
+    /* 第二栏对话框 */
+    
+    .dialog {
+        height: 848px;
+        border-top: 1px solid #D8E4F5;
+    }
+    /* 第三栏发送消息框 */
+    
+    .input {
+        height: 70px;
+        line-height: 70px;
+        text-indent: 44px;
+        color: #D8E4F5;
+        border-top: 1px solid #D8E4F5;
+    }
+    
+    .input img {
+        float: right;
+        margin: 26px 24px;
+    }
