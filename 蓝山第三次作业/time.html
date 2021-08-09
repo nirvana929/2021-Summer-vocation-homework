@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+            top: 2px;
+        }
+        
+        #elapseClock {
+            text-align: center;
+            font-size: 18px;
+            margin: 100px auto;
+            background-color: palegoldenrod;
+        }
+        
+        #elapseClock .digit {
+            font-family: "digit";
+            font-size: 36px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="elapseClock" class="=digit"></div>
+    <img src="images/angel.gif" alt="">
+    <script>
+        var pic = document.querySelector('img');
+        document.addEventListener('mousemove', function(e) { //注意用的是document，鼠标在文档中移动，触发事件
+            pic.style.top = e.pageY - 40 + 'px';
+            pic.style.left = e.pageX - 40 + 'px';
+        })
+        var clock = document.querySelector('#elapseClock');
+        var timer = setInterval(time, 1000);
+        var body = document.body;
+        var trans = setInterval(tran, 1000);
+        var colors = ['pink', 'hotpink', 'skyblue', 'green'];
+
+        function time() {
+
+            var current = new Date();
+            var future = new Date(2021, 8, 5, 0, 0, 0); //表示八月得用7
+            var start = current.getTime();
+            var over = future.getTime();
+            var seconds = Math.floor((over - start) / 1000);
+            var days = Math.floor(seconds / 60 / 60 / 24);
+            seconds -= days * (3600 * 24);
+            var hours = Math.floor(seconds / 60 / 60);
+            seconds -= hours * (3600);
+            var minutes = Math.floor(seconds / 60);
+            seconds -= minutes * 60;
+
+            clock.innerHTML = '<span>距离开学只剩下</span>' + days + '<span>天</span>' + hours + '<span>小时</span>' + minutes + '<span>分钟</span>' + seconds + '<span>秒</span>'
+        }
+
+        function tran() {
+            var num = parseInt(Math.random() * 4);
+            body.style.background = colors[num];
+        }
+    </script>
+</body>
+
+</html>
