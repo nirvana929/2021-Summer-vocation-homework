@@ -186,10 +186,10 @@
                 <div class="l-4"><span class="le">四等奖</span></div>
             </div>
             <div class="right">
-                <div class="r-5"><span class="ri">五等奖</span></div>
-                <div class="r-6"><span class="ri">六等奖</span></div>
-                <div class="r-7"><span class="ri">七等奖</span></div>
-                <div class="r-8"><span class="ri">八等奖</span></div>
+                <div class="r-5"><span class="ri">八等奖</span></div>
+                <div class="r-6"><span class="ri">七等奖</span></div>
+                <div class="r-7"><span class="ri">六等奖</span></div>
+                <div class="r-8"><span class="ri">五等奖</span></div>
             </div>
         </div>
         <div class="point">
@@ -200,6 +200,7 @@
         </div>
     </div>
     <script>
+        let text = ["一", "八", "七", "六", "五", "四", "三", "二"];
         let start = document.querySelector('.round');
         let timer = null;
         let wrapper = document.querySelector('.wrapper');
@@ -210,11 +211,50 @@
         start.addEventListener('mouseout', function(e) {
             start.style.backgroundColor = 'orange';
         })
-        start.addEventListener('click', function(e) {
+
+
+        function run(num, angle, text) {
+            let basic = 1800;
+            let begin = 0;
             timer = setInterval(function() {
-                let begin = 45;
-                wapper.style.transform = "rotate(" + (begin) + "deg)";
+
+                if (begin > (angle + basic)) {
+                    clearInterval(timer);
+                }
+                wrapper.style.transform = "rotate(" + (begin) + "deg)";
+                begin += 45;
             }, 70);
+
+        }
+        start.addEventListener('click', function() {
+            let randomIndex = parseInt(Math.random() * 8);
+            switch (randomIndex) {
+                case 0:
+                    run(0, 45, text);
+                    break;
+                case 1:
+                    run(1, 90, text);
+                    break;
+                case 2:
+                    run(2, 135, text);
+                    break;
+                case 3:
+                    run(3, 180, text);
+                    break;
+                case 4:
+                    run(4, 225, text);
+                    break;
+                case 5:
+                    run(5, 270, text);
+
+                    break;
+                case 6:
+                    run(6, 315, text);
+                    break;
+                case 7:
+                    run(7, 360, text);
+                    break;
+            }
         })
     </script>
 </body>
