@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Memo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        
+        body {
+            background-color: black;
+        }
+        
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 400px;
+            height: 600px;
+            background-color: #f38c78;
+            margin: 100px auto;
+        }
+        
+        .bd {
+            margin: 20px auto;
+            width: 340px;
+            height: 540px;
+            background-color: #2f3d4a;
+        }
+        
+        h1 {
+            color: white;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .import {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            height: 30px;
+            margin: auto;
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+        
+        input {
+            width: 250px;
+            height: 30px;
+            text-indent: 7em;
+            background-color: white;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            outline: none;
+        }
+        
+        button {
+            width: 50px;
+            height: 30px;
+            background-color: #f38c78;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            color: white;
+        }
+        
+        .node {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 30px;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #283140;
+        }
+        
+        .left {
+            width: 250px;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+        }
+        
+        .right {
+            width: 14px;
+            height: 14px;
+            border-radius: 7px;
+            background-color: #f38c78;
+        }
+        
+        .test {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+        
+        .right:hover {
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="bd">
+            <h1>Todos</h1>
+            <div class="import">
+                <input type="text" placeholder="别玩了，懒狗!">
+                <button>add</button>
+            </div>
+            <!-- <div class="node">
+                <div class="left">摸鱼</div>
+                <div class="right">
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        var box = document.querySelector('.import');
+        var port = document.querySelector('input');
+        var btn = document.querySelector('button');
+        var right = document.querySelector('.right');
+        var bd = document.querySelector('.bd');
+        var count = 0;
+        var itema = [];
+        var itemb = [];
+        var itemc = [];
+        btn.onmousedown = function() {
+            btn.style.backgroundColor = '#d0543a';
+            btn.style.color = 'white';
+        }
+        btn.onmouseup = function() {
+            btn.style.backgroundColor = '#f38c78';
+            btn.style.color = 'white';
+        }
+        btn.onclick = function() {
+            createItem(count++);
+            // var xhr = new XMLHttpRequest();
+            // open('POST', 'http://47.113.187.45:8989/todo/index/create');
+            // xhr.send(12);
+            // xhr.onreadystatechange = () => {
+            //     itemb.innerText = xhr.response;
+            // }
+
+        }
+
+        function createItem(num) {
+            if (num > 5) {
+                alert('备忘录容量有限！');
+                return 0;
+            }
+            itema[num] = document.createElement('div');
+            itema[num].className = 'node';
+            bd.appendChild(itema[num]);
+            itemb[num] = document.createElement('div');
+            itemb[num].className = 'left';
+            itemc[num] = document.createElement('div');
+            itemc[num].className = 'right';
+            itema[num].appendChild(itemb[num]);
+            itema[num].appendChild(itemc[num]);
+            bd.appendChild(itema[num]);
+            itemb[num].innerText = port.value;
+            itemc[num].onclick = function() {
+                bd.removeChild(itema[num]);
+                count--;
+            }
+            port.value = '';
+        }
+        port.onfocus = function() {
+            btn.innerText = 'add';
+            btn.style.backgroundColor = '#f38c78';
+        }
+        port.onblur = function() {
+            btn.innerText = '';
+            btn.style.backgroundColor = 'white';
+        }
+    </script>
+</body>
+
+</html>
