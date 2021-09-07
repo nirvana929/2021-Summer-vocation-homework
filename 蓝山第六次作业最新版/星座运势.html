@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            display: block;
+            margin: 0 auto;
+            margin-top: 50px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            opacity: 0.5;
+        }
+        
+        .header input {
+            display: inline-block;
+            height: 50px;
+            width: 300px;
+            border: 1px solid hotpink;
+        }
+        
+        .header .btn {
+            display: inline-block;
+            height: 50px;
+            width: 100px;
+            border: 1px solid hotpink;
+        }
+        
+        body {
+            background-image: url(image-3/星座背景.webp);
+        }
+        
+        .king {
+            margin-top: 50px;
+        }
+        
+        .king ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            background-color: #133554;
+            opacity: 0.8;
+        }
+        
+        .king div {
+            float: left;
+            color: white;
+            height: 200px;
+            width: 100px;
+        }
+        
+        .king li {
+            width: 100px;
+            height: 200px;
+            list-style: none;
+        }
+        
+        .king h1 {
+            text-align: center;
+        }
+        
+        .king img {
+            float: left;
+            display: none;
+        }
+        
+        .back {
+            position: absolute;
+            text-decoration: none;
+            top: 30px;
+            right: 30px;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: hotpink;
+        }
+        
+        .content {
+            margin-top: 20px;
+            height: 150px;
+            font-size: 20px;
+            border: 1px solid hotpink;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="header">请输入你的星座</div> -->
+    <!-- <div class="header">
+        <p>请输入你的星座</p>
+        <input type="text" class="input">
+    </div> -->
+    <div class="header"><input type="text" class="input" placeholder="请输入你的星座">
+        <button class="btn">提交</button></div>
+
+    <div class="king">
+        <ul>
+            <li class="current">
+                <div class="text">
+                    <h1>白羊座</h1>
+                    <p>3月21日~4月29日</p>
+                </div>
+                <img src="image-3/白羊座.jfif" alt="" class="small">
+            </li>
+            <li class="current">
+                <div class="text">
+                    <h1>处女座</h1>
+                    <p>3月21日~4月29日</p>
+                </div>
+                <img src="image-3/处女座.jfif" alt="" class="small">
+            </li>
+            <li class="current">
+                <div class="text">
+                    <h1>金牛座</h1>
+                    <p>4月20日~5月20日</p>
+                </div>
+                <img src="image-3/金牛座.jfif" alt="" class="small">
+            </li>
+            <li class="current">
+                <div class="text">
+                    <h1>双子座</h1>
+                    <p>5月21日~6月21日</p>
+                </div>
+                <img src="image-3/双子座.jfif" alt="" class="small">
+            </li>
+            <li class="current">
+                <div class="text">
+                    <h1>巨蟹座</h1>
+                    <p>6月22日~7月22日</p>
+                </div>
+                <img src="image-3/巨蟹座.jfif" alt="" class="small">
+            </li>
+            <li class="current">
+                <div class="text">
+                    <h1>狮子座</h1>
+                    <p>7月23日~8月22日</p>
+                </div>
+                <img src="image-3/狮子座.jfif" alt="" class="small">
+            </li>
+        </ul>
+
+    </div>
+    <div class="content"></div>
+    <a href="myhtml.html" class="back">back</a>
+    <script src="Jquery.min.js"></script>
+    <script>
+        $(function() {
+            $(".king li").eq(0).stop().animate({
+                width: 300
+            }).find(".small").stop().fadeIn();
+            $(".king li").mouseenter(function() {
+                $(this).stop().animate({
+                    width: 300
+                }).find(".small").stop().fadeIn();
+                $(this).siblings().stop().animate({
+                    width: 100
+                }).find(".small").stop().fadeOut();
+            })
+            $(".btn").on("click", function() {
+                var str = $(".input").val();
+                console.log(str);
+                change(str);
+            })
+
+            function change(str) {
+                $.get({
+                    url: "http://api.tianapi.com/txapi/star/index",
+                    data: {
+                        key: '76907034fc7b1324be38fb8c356477b4',
+                        astro: str
+                    },
+                    success: (backdata) => {
+                        let data = JSON.stringify(backdata);
+                        data = JSON.parse(data);
+                        console.log(backdata);
+                        console.log(data.newslist[8].content);
+                        $(".content").text(data.newslist[8].content);
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

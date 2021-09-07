@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舔狗不得好死！！！</title>
+    <style>
+        body {
+            background-image: url(image-2/bg.jpg);
+        }
+        
+        .circle {
+            display: flex;
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+            margin: 50px auto;
+            margin-bottom: 50px;
+            border: 1px solid hotpink;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+        }
+        
+        .text {
+            width: 90%;
+            height: 250px;
+            border-top: 1px solid hotpink;
+            border-bottom: 1px solid hotpink;
+            margin: 0px auto;
+        }
+        
+        .date {
+            height: 50px;
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .content {
+            margin-top: 20px;
+            height: 150px;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .btn {
+            height: 50px;
+            width: 100px;
+            line-height: 50px;
+            margin: 0px auto;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px solid white;
+        }
+        
+        img {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .back {
+            position: absolute;
+            text-decoration: none;
+            top: 30px;
+            right: 30px;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="image-2/舔狗.gif" alt="#">
+    <div class="circle">舔狗日记</div>
+    <div class="text">
+        <div class="date"></div>
+        <div class="content"></div>
+    </div>
+    <div class="btn">再来一段</div>
+    <a href="myhtml.html" class="back">back</a>
+    <script src="Jquery.min.js"></script>
+    <script>
+        $(function() {
+            //时间显示
+            var timer = setInterval(time, 1000);
+            var count = 0;
+
+            function time() {
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth();
+                var day = date.getDate();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                $(".date").text(year + "-" + month + "-" + day + "   " + hour + "小时" + minute + "分钟" + second + "秒");
+            }
+            change();
+            //舔狗日记文本
+            $(".btn").on("click", function() {
+                count++;
+                if (count % 10 == 0) {
+                    alert("舔狗不得好死!!!");
+                }
+                change();
+            })
+
+            function change() {
+                $.get({
+                    url: "http://api.tianapi.com/txapi/tiangou/index?key=76907034fc7b1324be38fb8c356477b4",
+                    // function(backdata) {
+                    //     $(".content").text(backdata);
+                    //     console.log(backdata);
+                    // }
+                    success: (backdata) => {
+
+                        let data = JSON.stringify(backdata);
+                        data = JSON.parse(data);
+                        console.log(backdata);
+                        console.log(data.newslist[0].content);
+                        $(".content").text(data.newslist[0].content);
+                        // let obj = JSON.parse(backdata);
+                        // console.log(obj);
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

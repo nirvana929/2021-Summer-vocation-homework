@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-image: url("image-1/蓝色星空.webp")
+        }
+        
+        .header {
+            top: 0;
+            height: 118px;
+            width: 100%;
+            /* position: fixed; */
+            z-index: 1000;
+            left: 0px;
+            background-color: #258cf3;
+            opacity: 0.5;
+            background-image: linear-gradient( 180deg, #258cf3, #17a8ed);
+            min-width: 100%;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .nav {
+            width: 256px;
+            background-image: linear-gradient( 180deg, #17a8ed, #84ccec);
+        }
+        
+        .nav div[class^="nav-item"] {
+            width: 256px;
+            height: 70px;
+            line-height: 70px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 16px;
+        }
+        
+        .focus {
+            background-color: pink;
+        }
+        
+        .nav div a {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 22px;
+            text-decoration: none;
+        }
+        
+        .nav div a div[class^="list"] {
+            display: inline-block;
+            font-size: 24px;
+        }
+        
+        .nav div a .cir {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin-right: 20px;
+            background-color: hotpink;
+        }
+        
+        .pic {
+            position: relative;
+            width: 497px;
+            height: 497px;
+            background-color: #258cf3;
+        }
+        
+        .img {}
+        
+        .trigger {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+        }
+        
+        .on {
+            background-image: url(//s1.hdslb.com/bfs/static/jinkela/international-home/assets/icon_slide_selected.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: scale(1.5);
+        }
+        
+        .trigger span:hover {
+            background-color: #00A1D6;
+            border: 1px solid white;
+            transform: scale(1.2);
+            transition: all .2s;
+        }
+        
+        .trigger span {
+            display: inline-block;
+            margin-left: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: all .2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="container">
+        <div class="nav">
+            <div class="nav-item-1">
+                <a href="舔狗日记.html">
+                    <div class="list-1">晚安心语</div>
+                    <div class="cir"></div>
+                </a>
+            </div>
+            <div class="nav-item-2">
+                <a href="星座运势.html">
+                    <div class="list-2">朋友圈文案</div>
+                    <div class="cir"></div>
+                </a>
+            </div>
+            <div class="nav-item-3">
+                <a href="舔狗日记.html">
+                    <div class="list-3">故事大全</div>
+                    <div class="cir"></div>
+                </a>
+            </div>
+            <div class="nav-item-4">
+                <a href="星座运势.html">
+                    <div class="list-4">雷人笑话</div>
+                    <div class="cir"></div>
+                </a>
+            </div>
+            <div class="nav-item-5">
+                <a href="舔狗日记.html">
+                    <div class="list-5">舔狗日记</div>
+                    <div class="cir"></div>
+                </a>
+            </div>
+            <div class="nav-item-6">
+                <a href="星座运势.html">
+                    <div class="list-6">星座运势</div>
+                    <div class="cir"></div>
+                </a>
+            </div>
+            <div class="nav-item-7">
+                <a href="舔狗日记.html">
+                    <div class="list-7">土味情话</div>
+                    <div class="cir"></div>
+                </a>
+            </div>
+        </div>
+        <div class="pic"><img src="image-2/晚安心语.webp" alt="" width="497" height="497">
+
+            <div class="trigger">
+                <!-- <span>晚安心语</span>
+                <span>朋友圈文案</span>
+                <span>故事大全</span>
+                <span>雷人笑话</span>
+                <span>舔狗日记</span>
+                <span>星座运势</span>
+                <span>土味情话</span> -->
+                <span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+    <script src="Jquery.min.js"></script>
+    <script>
+        $(function() {
+            //鼠标放在导航栏，改变颜色
+            var timecount = 1;
+            $('.nav div[class^="nav"]').on("mouseover", function() {
+                    $(this).addClass("focus").siblings().removeClass("focus");
+                    var a = $(this).index();
+                    changpic(a + 1);
+                })
+                //点击小图标放大
+            $(".trigger span").on("click", function() {
+                    console.log("点击");
+                    $(this).addClass("on");
+                    $(this).siblings().removeClass("on");
+                    changpic($(this).index() + 1);
+                    timecount = $(this).index() + 1;
+
+                })
+                //每隔5秒切换一次
+            var timer = setInterval(function() {
+                    if (timecount == 7) {
+                        timecount = 1;
+                    } else {
+                        timecount++;
+                    }
+                    $(".trigger span").eq(timecount - 1).addClass("on").siblings().removeClass("on");
+                    changpic(timecount);
+                }, 3000)
+                //
+            function changpic(num) {
+                //图片格式不一样，暂时不采用此方法
+                // $(".pic img").prop("src", "image-2/" + $("span").eq(num).text() + ".gif");
+                switch (num) {
+                    case 1:
+                        $(".pic img").prop("src", "image-2/晚安心语.webp");
+                        break;
+                    case 2:
+                        $(".pic img").prop("src", "image-2/朋友圈文案.webp");
+                        break;
+                    case 3:
+                        $(".pic img").prop("src", "image-2/故事大全.gif");
+                        break;
+                    case 4:
+                        $(".pic img").prop("src", "image-2/雷人笑话.gif");
+                        break;
+                    case 5:
+                        $(".pic img").prop("src", "image-2/舔狗.gif");
+                        break;
+                    case 6:
+                        $(".pic img").prop("src", "image-2/星座运势.gif");
+                        break;
+                    case 7:
+                        $(".pic img").prop("src", "image-2/土味情话.gif");
+                        break;
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
